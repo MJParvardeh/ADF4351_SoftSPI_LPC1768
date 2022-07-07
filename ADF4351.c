@@ -17,7 +17,7 @@ void ADF4351_Init()
 Direct programming of ADF4351 registers
 for more information refer to ADF4351.h and ADF4351 Datasheet
 */
-uint8_t ADF4351_DirectSet(ADF_REG_t PLLREG)
+uint8_t ADF4351_DirectSet(ADF4351_REG_t PLLREG)
 {
 	uint32_t	timeout;
 	SoftSPIData_s PLLS;
@@ -26,15 +26,17 @@ uint8_t ADF4351_DirectSet(ADF_REG_t PLLREG)
 	PLLS.SPIMode.Modebits.LSBMode=MSB_FIRST;		 
 	PLLS.size=32;	
 	PLLS.SPIType=SPIS;
-	PLLS.data=PLLREG.REG0;
+	PLLS.data=PLLREG.REG0.REG0_VAL;
 	SoftSPISend(PLLS);	
-	PLLS.data=PLLREG.REG1;
+	PLLS.data=PLLREG.REG1.REG1_VAL;
 	SoftSPISend(PLLS);
-	PLLS.data=PLLREG.REG2;
+	PLLS.data=PLLREG.REG2.REG2_VAL;
 	SoftSPISend(PLLS);
-	PLLS.data=PLLREG.REG3;
+	PLLS.data=PLLREG.REG3.REG3_VAL;
 	SoftSPISend(PLLS);	
-	PLLS.data=PLLREG.REG4;
+	PLLS.data=PLLREG.REG4.REG4_VAL;
+	SoftSPISend(PLLS);
+	PLLS.data=PLLREG.REG5.REG5_VAL;
 	SoftSPISend(PLLS);
 	while((READ_LD_VALUE==0)&&(timeout<60000))	timeout++;
 	if(timeout==60000)

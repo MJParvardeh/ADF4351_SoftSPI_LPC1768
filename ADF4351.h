@@ -46,7 +46,7 @@ ADF4351 registers
 */
 typedef union 
 {
-	uint32_t	REG0;
+	uint32_t	REG0_VAL;
 	struct 
 	{
 		uint32_t	control							:3;
@@ -58,7 +58,7 @@ typedef union
 	
 typedef union 	
 {	
-	uint32_t	REG1;	
+	uint32_t	REG1_VAL;	
 	struct 	
 	{	
 		uint32_t	control							:3;
@@ -72,7 +72,7 @@ typedef union
 
 typedef union 
 {
-	uint32_t	REG2;
+	uint32_t	REG2_VAL;
 	struct 
 	{
 		uint32_t	control							:3;
@@ -95,7 +95,7 @@ typedef union
 
 typedef union 
 {
-	uint32_t	REG3;
+	uint32_t	REG3_VAL;
 	struct 
 	{
 		uint32_t	control							:3;		
@@ -113,7 +113,7 @@ typedef union
 
 typedef union 
 {
-	uint32_t	REG4;
+	uint32_t	REG4_VAL;
 	struct 
 	{
 		uint32_t	control							:3;		
@@ -133,7 +133,7 @@ typedef union
 
 typedef union 
 {
-	uint32_t	REG5;
+	uint32_t	REG5_VAL;
 	struct 
 	{
 		uint32_t	control							:3;		  
@@ -147,14 +147,15 @@ typedef union
 
 typedef  struct
 {
-	uint32_t	REG0;
-	uint32_t	REG1;
-	uint32_t	REG2;
-	uint32_t	REG3;	
-	uint32_t	REG4;
-	uint32_t	REG5;
-} ADF_REG_t;
+	REG0_t	REG0;
+	REG1_t	REG1;
+	REG2_t	REG2;
+	REG3_t	REG3;	
+	REG4_t	REG4;
+	REG5_t	REG5;
+} ADF4351_REG_t;
 
+uint8_t ADF4351_DirectSet(ADF4351_REG_t PLLREG);
 void ADF4351_Init();
 uint8_t SetPLLFREQ(uint8_t TRMode,uint8_t PowerMode,uint8_t CO,uint8_t CHS, uint32_t FREQ);
 
